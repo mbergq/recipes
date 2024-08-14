@@ -1,8 +1,5 @@
-import React from "react";
-
 import { Text } from "react-native";
 function Test() {
-  return <Text>Recipes</Text>;
+  return <Text style={{ color: "red" }}>Recipes</Text>;
 }
-
 export default Test;
