@@ -23,10 +23,31 @@ interface Data {
           };
         }
       ];
+    },
+    {
+      language: [
+        {
+          english: {
+            id: number;
+            name: string;
+            description: string;
+            ingredients: [{ name: string; amount: string }];
+            instructions: [string];
+          };
+          swedish: {
+            id: number;
+            name: string;
+            description: string;
+            ingredients: [{ name: string; amount: string }];
+            instructions: [string];
+          };
+        }
+      ];
     }
   ];
 }
-
+// use .length to count length of available objects and loop trough each name of recipes
+const n = 0;
 function Test() {
   const [data, setData] = useState<Data>(null);
 
@@ -37,16 +58,19 @@ function Test() {
       );
       const data = await response.json();
       setData(data);
+      console.log("Data is fetched");
     };
     fetchData();
   }, []);
   return (
     <StyledView>
       <Text style={{ color: "red" }}>Recipes</Text>
-      {<Text>{data.recipes[0].language[0].swedish.name}</Text>}
+      {data !== null && <Text>{data.recipes[1].language[0].swedish.name}</Text>}
       <Button
         title="Data"
-        onPress={() => console.log(data.recipes[0].language[0].swedish)}
+        onPress={() => {
+          console.log(data.recipes);
+        }}
       ></Button>
     </StyledView>
   );
