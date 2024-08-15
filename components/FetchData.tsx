@@ -1,5 +1,5 @@
 import { Button, Text } from "react-native";
-import { StyledView } from "./styled-components/StyledView";
+import { StyledView } from "../styled-components/StyledView";
 import { useEffect, useState } from "react";
 
 interface Data {
@@ -46,8 +46,7 @@ interface Data {
     }
   ];
 }
-// use .length to count length of available objects and loop trough each name of recipes
-const n = 0;
+
 function Test() {
   const [data, setData] = useState<Data>(null);
   const [recipeNames, setRecipeNames] = useState([]);

@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { Text, View, Button } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
-import Test from "./Test";
+import FetchData from "./components/FetchData";
 
 function HomeScreen({ navigation }) {
   return (
@@ -27,7 +27,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Recipes" component={Test} />
+        <Stack.Screen name="Recipes" component={FetchData} />
       </Stack.Navigator>
     </NavigationContainer>
   );
