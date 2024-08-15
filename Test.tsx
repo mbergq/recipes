@@ -50,6 +50,7 @@ interface Data {
 const n = 0;
 function Test() {
   const [data, setData] = useState<Data>(null);
+  const [recipeNames, setRecipeNames] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,17 +60,24 @@ function Test() {
       const data = await response.json();
       setData(data);
       console.log("Data is fetched");
+
+      let names = [];
+      for (let i = 0; i < data.recipes.length; i++) {
+        names.push(data.recipes[i].language[0].swedish.name);
+      }
+      setRecipeNames(names);
     };
     fetchData();
   }, []);
   return (
     <StyledView>
       <Text style={{ color: "red" }}>Recipes</Text>
-      {data !== null && <Text>{data.recipes[1].language[0].swedish.name}</Text>}
+      {/* temporary lazy fix for key-prop */}
+      {recipeNames && recipeNames.map((name) => <Text key={name}>{name}</Text>)}
       <Button
         title="Data"
         onPress={() => {
-          console.log(data.recipes);
+          console.log(recipeNames);
         }}
       ></Button>
     </StyledView>
