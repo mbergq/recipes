@@ -1,6 +1,7 @@
-import { Button, Text } from "react-native";
+import { Button, FlatList, Text } from "react-native";
 import { StyledView } from "../styled-components/StyledView";
 import { useEffect, useState } from "react";
+import RecipeList from "./RecipeList";
 
 interface Data {
   recipes: [
@@ -47,7 +48,7 @@ interface Data {
   ];
 }
 
-function Test() {
+function FetchData() {
   const [data, setData] = useState<Data>(null);
   const [recipeNames, setRecipeNames] = useState([]);
 
@@ -62,7 +63,11 @@ function Test() {
 
       let names = [];
       for (let i = 0; i < data.recipes.length; i++) {
-        names.push(data.recipes[i].language[0].swedish.name);
+        let myObject = {
+          id: i,
+          title: data.recipes[i].language[0].swedish.name,
+        };
+        names.push(myObject);
       }
       setRecipeNames(names);
     };
@@ -71,8 +76,7 @@ function Test() {
   return (
     <StyledView>
       <Text style={{ color: "red" }}>Recipes</Text>
-      {/* temporary lazy fix for key-prop */}
-      {recipeNames && recipeNames.map((name) => <Text key={name}>{name}</Text>)}
+      <RecipeList props={recipeNames} />
       <Button
         title="Data"
         onPress={() => {
@@ -82,4 +86,4 @@ function Test() {
     </StyledView>
   );
 }
-export default Test;
+export default FetchData;
