@@ -1,7 +1,7 @@
 import { Button, Text } from "react-native";
 import { useEffect, useState } from "react";
 
-interface RecipeObject {
+interface Recipe {
   id: number;
   name: string;
   description: string;
@@ -12,7 +12,7 @@ interface RecipeObject {
 function Recipe({ route }) {
   const { recipeTitle } = route.params;
   const [data, setData] = useState(null);
-  const [recipe, setRecipe] = useState<RecipeObject>([]);
+  const [recipe, setRecipe] = useState<Recipe>(Object);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,8 +38,8 @@ function Recipe({ route }) {
   return (
     <>
       <Text>{recipeTitle}</Text>
-      {recipe.description !== null && <Text>{recipe.description}</Text>}
-      <Button title="Test" onPress={() => console.log(recipe)}></Button>
+      {recipe.description && <Text>{recipe.description}</Text>}
+      <Button title="Test" onPress={() => console.log(recipe.name)}></Button>
     </>
   );
 }
