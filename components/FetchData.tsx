@@ -75,14 +75,13 @@ function FetchData() {
   }, []);
   return (
     <StyledView>
-      <Text style={{ color: "red" }}>Recipes</Text>
       <RecipeList props={recipeNames} />
-      <Button
+      {/* <Button
         title="Data"
         onPress={() => {
           console.log(recipeNames);
         }}
-      ></Button>
+      ></Button> */}
     </StyledView>
   );
 }
