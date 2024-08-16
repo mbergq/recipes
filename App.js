@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View, Button } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
 import FetchData from "./components/FetchData";
+import Recipe from "./components/Recipe";
 
 function HomeScreen({ navigation }) {
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Recipes" component={FetchData} />
+        <Stack.Screen name="Recipe" component={Recipe} />
       </Stack.Navigator>
     </NavigationContainer>
   );

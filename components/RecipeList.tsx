@@ -13,13 +13,14 @@ function RecipeList(props: Props) {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   type IdProps = { id: number };
-  type NameProps = { title: string };
+  type TitleProps = { title: string };
 
-  const Item = ({ title }: NameProps, { id }: IdProps) => (
+  const Item = ({ title }: TitleProps, { id }: IdProps) => (
     <View>
       <Pressable
-        onPress={() => navigation.navigate("Recipe", { recipeId: id })}
+        onPress={() => navigation.navigate("Recipe", { recipeTitle: title })}
       >
+        <Button title="Test" onPress={() => console.log(title)}></Button>
         <StyledListItem>{title}</StyledListItem>
       </Pressable>
     </View>
