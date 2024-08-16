@@ -20,7 +20,7 @@ function RecipeList(props: Props) {
       <Pressable
         onPress={() => navigation.navigate("Recipe", { recipeTitle: title })}
       >
-        <Button title="Test" onPress={() => console.log(title)}></Button>
+        {/* <Button title="Test" onPress={() => console.log(title)}></Button> */}
         <StyledListItem>{title}</StyledListItem>
       </Pressable>
     </View>
