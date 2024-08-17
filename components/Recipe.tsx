@@ -1,5 +1,6 @@
 import { Button, Text } from "react-native";
 import { useEffect, useState } from "react";
+import { RecipeLayout } from "../styled-components/S.RecipeLayout";
 
 interface Recipe {
   id: number;
@@ -37,9 +38,20 @@ function Recipe({ route }) {
   }, []);
   return (
     <>
-      <Text>{recipeTitle}</Text>
-      {recipe.description && <Text>{recipe.description}</Text>}
-      <Button title="Test" onPress={() => console.log(recipe.name)}></Button>
+      <RecipeLayout>
+        {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
+        <Text>{recipeTitle}</Text>
+        {recipe.description && <Text>{recipe.description}</Text>}
+        {/* image here */}
+        {/* wrap ingredients here */}
+        {recipe.ingredients &&
+          recipe.ingredients.map((i) => <Text>{i.name + " " + i.amount}</Text>)}
+        {/* wrap ingredients here */}
+        {/* wrap instructions here */}
+        {recipe.instructions &&
+          recipe.instructions.map((instruction) => <Text>{instruction}</Text>)}
+        {/* wrap instructions here */}
+      </RecipeLayout>
     </>
   );
 }
