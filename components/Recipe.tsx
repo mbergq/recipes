@@ -61,8 +61,6 @@ function Recipe({ route }) {
         {recipe.description && (
           <StyledDescription>{recipe.description}</StyledDescription>
         )}
-        {/* image here */}
-        {/* wrap ingredients here */}
         <StyledIngView>
           <StyledDescription>Ingredienser</StyledDescription>
           {recipe.ingredients &&
@@ -70,8 +68,6 @@ function Recipe({ route }) {
               <Text>{i.name + "- " + i.amount}</Text>
             ))}
         </StyledIngView>
-        {/* wrap ingredients here */}
-        {/* wrap instructions here */}
         <StyledInsView>
           <StyledDescription>Instruktioner</StyledDescription>
           {recipe.instructions &&
@@ -79,7 +75,6 @@ function Recipe({ route }) {
               <Text>{instruction}</Text>
             ))}
         </StyledInsView>
-        {/* wrap instructions here */}
       </RecipeLayout>
       <TextInput></TextInput>
     </ScrollView>
