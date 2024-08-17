@@ -1,6 +1,13 @@
-import { Button, Text } from "react-native";
+import { Text, ScrollView, Image, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 import { RecipeLayout } from "../styled-components/S.RecipeLayout";
+
+const styles = StyleSheet.create({
+  headerImg: {
+    width: 100,
+    height: 122,
+  },
+});
 
 interface Recipe {
   id: number;
@@ -37,10 +44,14 @@ function Recipe({ route }) {
     fetchData();
   }, []);
   return (
-    <>
+    <ScrollView>
       <RecipeLayout>
         {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
         <Text>{recipeTitle}</Text>
+        <Image
+          style={styles.headerImg}
+          source={require("../assets/testimg.jpg")}
+        ></Image>
         {recipe.description && <Text>{recipe.description}</Text>}
         {/* image here */}
         {/* wrap ingredients here */}
@@ -52,7 +63,7 @@ function Recipe({ route }) {
           recipe.instructions.map((instruction) => <Text>{instruction}</Text>)}
         {/* wrap instructions here */}
       </RecipeLayout>
-    </>
+    </ScrollView>
   );
 }
 
