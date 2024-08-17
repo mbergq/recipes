@@ -1,6 +1,12 @@
-import { Text, ScrollView, Image, StyleSheet } from "react-native";
+import { Text, ScrollView, Image, StyleSheet, TextInput } from "react-native";
 import { useEffect, useState } from "react";
 import { RecipeLayout } from "../styled-components/S.RecipeLayout";
+import {
+  StyledTitle,
+  StyledDescription,
+  StyledIngView,
+  StyledInsView,
+} from "../styled-components/S.Recipe";
 
 const styles = StyleSheet.create({
   headerImg: {
@@ -47,22 +53,35 @@ function Recipe({ route }) {
     <ScrollView>
       <RecipeLayout>
         {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
-        <Text>{recipeTitle}</Text>
+        <StyledTitle>{recipeTitle}</StyledTitle>
         <Image
           style={styles.headerImg}
           source={require("../assets/testimg.jpg")}
         ></Image>
-        {recipe.description && <Text>{recipe.description}</Text>}
+        {recipe.description && (
+          <StyledDescription>{recipe.description}</StyledDescription>
+        )}
         {/* image here */}
         {/* wrap ingredients here */}
-        {recipe.ingredients &&
-          recipe.ingredients.map((i) => <Text>{i.name + " " + i.amount}</Text>)}
+        <StyledIngView>
+          <StyledDescription>Ingredienser</StyledDescription>
+          {recipe.ingredients &&
+            recipe.ingredients.map((i) => (
+              <Text>{i.name + "- " + i.amount}</Text>
+            ))}
+        </StyledIngView>
         {/* wrap ingredients here */}
         {/* wrap instructions here */}
-        {recipe.instructions &&
-          recipe.instructions.map((instruction) => <Text>{instruction}</Text>)}
+        <StyledInsView>
+          <StyledDescription>Instruktioner</StyledDescription>
+          {recipe.instructions &&
+            recipe.instructions.map((instruction) => (
+              <Text>{instruction}</Text>
+            ))}
+        </StyledInsView>
         {/* wrap instructions here */}
       </RecipeLayout>
+      <TextInput></TextInput>
     </ScrollView>
   );
 }
