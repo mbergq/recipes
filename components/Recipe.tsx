@@ -1,4 +1,10 @@
-import { Text, ScrollView, Image, StyleSheet, TextInput } from "react-native";
+import {
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+} from "react-native";
 import { useEffect, useState } from "react";
 import { RecipeLayout } from "../styled-components/S.RecipeLayout";
 import {
@@ -51,32 +57,35 @@ function Recipe({ route }) {
   }, []);
   return (
     <ScrollView>
-      <RecipeLayout>
-        {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
-        <StyledTitle>{recipeTitle}</StyledTitle>
-        <Image
-          style={styles.headerImg}
-          source={require("../assets/testimg.jpg")}
-        ></Image>
-        {recipe.description && (
-          <StyledDescription>{recipe.description}</StyledDescription>
-        )}
-        <StyledIngView>
-          <StyledDescription>Ingredienser</StyledDescription>
-          {recipe.ingredients &&
-            recipe.ingredients.map((i) => (
-              <Text>{i.name + "- " + i.amount}</Text>
-            ))}
-        </StyledIngView>
-        <StyledInsView>
-          <StyledDescription>Instruktioner</StyledDescription>
-          {recipe.instructions &&
-            recipe.instructions.map((instruction) => (
-              <Text>{instruction}</Text>
-            ))}
-        </StyledInsView>
-      </RecipeLayout>
-      <TextInput></TextInput>
+      {data !== null ? (
+        <RecipeLayout>
+          {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
+          <StyledTitle>{recipeTitle}</StyledTitle>
+          <Image
+            style={styles.headerImg}
+            source={require("../assets/testimg.jpg")}
+          ></Image>
+          {recipe.description && (
+            <StyledDescription>{recipe.description}</StyledDescription>
+          )}
+          <StyledIngView>
+            <StyledDescription>Ingredienser</StyledDescription>
+            {recipe.ingredients &&
+              recipe.ingredients.map((i) => (
+                <Text>{i.name + "- " + i.amount}</Text>
+              ))}
+          </StyledIngView>
+          <StyledInsView>
+            <StyledDescription>Instruktioner</StyledDescription>
+            {recipe.instructions &&
+              recipe.instructions.map((instruction) => (
+                <Text>{instruction}</Text>
+              ))}
+          </StyledInsView>
+        </RecipeLayout>
+      ) : (
+        <ActivityIndicator size="small" color="#0000ff" />
+      )}
     </ScrollView>
   );
 }
