@@ -1,4 +1,4 @@
-import { Button, FlatList, Text } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { StyledView } from "../styled-components/StyledView";
 import { useEffect, useState } from "react";
 import RecipeList from "./RecipeList";
@@ -75,7 +75,12 @@ function FetchData() {
   }, []);
   return (
     <StyledView>
-      <RecipeList props={recipeNames} />
+      {data !== null ? (
+        <RecipeList props={recipeNames} />
+      ) : (
+        <ActivityIndicator size="small" color="#0000ff" />
+      )}
+      {/* <RecipeList props={recipeNames} /> */}
       {/* <Button
         title="Data"
         onPress={() => {
