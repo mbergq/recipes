@@ -3,7 +3,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Button } from "react-native";
+import { Text, Button } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
 import FetchData from "./components/FetchData";
 import Recipe from "./components/Recipe";
@@ -27,9 +27,34 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Recipes" component={FetchData} />
-        <Stack.Screen name="Recipe" component={Recipe} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Recipes App",
+            headerStyle: {
+              backgroundColor: "papayawhip",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Recipes"
+          component={FetchData}
+          options={{
+            headerStyle: {
+              backgroundColor: "papayawhip",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Recipe"
+          component={Recipe}
+          options={{
+            headerStyle: {
+              backgroundColor: "papayawhip",
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

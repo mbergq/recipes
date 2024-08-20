@@ -49,7 +49,6 @@ function Recipe({ route }) {
     }
     setTimeout(() => {
       setRefreshing(false);
-      // alert("Refresh");
     }, 1500);
   }, []);
 
@@ -84,7 +83,6 @@ function Recipe({ route }) {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           {data !== null ? (
             <RecipeLayout>
-              {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
               <StyledTitle>{recipeTitle}</StyledTitle>
               <Image
                 style={styles.headerImg}
