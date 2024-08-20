@@ -4,8 +4,9 @@ import {
   Image,
   StyleSheet,
   ActivityIndicator,
+  RefreshControl,
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { RecipeLayout } from "../styled-components/S.RecipeLayout";
 import {
   StyledTitle,
@@ -33,6 +34,18 @@ function Recipe({ route }) {
   const { recipeTitle } = route.params;
   const [data, setData] = useState(null);
   const [recipe, setRecipe] = useState<Recipe>(Object);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    if (data === null) {
+      setRefreshing(true);
+      console.log("Refreshing..");
+    }
+    setTimeout(() => {
+      setRefreshing(false);
+      // alert("Refresh");
+    }, 1500);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +70,7 @@ function Recipe({ route }) {
   }, []);
   return (
     <ScrollView>
+      <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       {data !== null ? (
         <RecipeLayout>
           {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
