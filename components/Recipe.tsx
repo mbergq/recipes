@@ -1,12 +1,11 @@
 import {
   Text,
-  ScrollView,
   Image,
   StyleSheet,
   ActivityIndicator,
   RefreshControl,
+  Switch,
 } from "react-native";
-import { useCallback, useEffect, useState } from "react";
 import {
   StyledTitle,
   StyledDescription,
@@ -16,6 +15,7 @@ import {
   StyledScrollView,
   RecipeLayout,
 } from "../styled-components/S.Recipe";
+import { useCallback, useEffect, useState } from "react";
 
 const styles = StyleSheet.create({
   headerImg: {
@@ -36,7 +36,11 @@ function Recipe({ route }) {
   const { recipeTitle } = route.params;
   const [data, setData] = useState(null);
   const [recipe, setRecipe] = useState<Recipe>(Object);
+
   const [refreshing, setRefreshing] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const onRefresh = useCallback(() => {
     if (data === null) {
@@ -74,38 +78,80 @@ function Recipe({ route }) {
   let instrNumber = 1;
 
   return (
-    <StyledScrollView>
-      <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      {data !== null ? (
-        <RecipeLayout>
-          {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
-          <StyledTitle>{recipeTitle}</StyledTitle>
-          <Image
-            style={styles.headerImg}
-            source={require("../assets/testimg.jpg")}
-          ></Image>
-          {recipe.description && (
-            <StyledDescription>{recipe.description}</StyledDescription>
+    <>
+      {isEnabled === false ? (
+        <StyledScrollView>
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          {data !== null ? (
+            <RecipeLayout>
+              {/* <Button title="Test" onPress={() => console.log(recipe.name)}></Button> */}
+              <StyledTitle>{recipeTitle}</StyledTitle>
+              <Image
+                style={styles.headerImg}
+                source={require("../assets/testimg.jpg")}
+              ></Image>
+              {recipe.description && (
+                <StyledDescription>{recipe.description}</StyledDescription>
+              )}
+              <StyledIngView>
+                <Switch
+                  trackColor={{ false: "#767577", true: "#81b0ff" }}
+                  thumbColor={isEnabled ? "#ffffff" : "#f4f3f4"}
+                  ios_backgroundColor="#3e3e3e"
+                  onValueChange={toggleSwitch}
+                  value={isEnabled}
+                />
+                <StyledDescription>Ingredienser</StyledDescription>
+                {recipe.ingredients &&
+                  recipe.ingredients.map((i) => (
+                    <Text>{i.name + "- " + i.amount}</Text>
+                  ))}
+              </StyledIngView>
+              <StyledInsView>
+                <StyledDescription>Instruktioner</StyledDescription>
+                {recipe.instructions &&
+                  recipe.instructions.map((instruction) => (
+                    <StyledText>
+                      {instrNumber++ + ". " + instruction}
+                    </StyledText>
+                  ))}
+              </StyledInsView>
+            </RecipeLayout>
+          ) : (
+            <ActivityIndicator size="small" color="#0000ff" />
           )}
-          <StyledIngView>
-            <StyledDescription>Ingredienser</StyledDescription>
-            {recipe.ingredients &&
-              recipe.ingredients.map((i) => (
-                <Text>{i.name + "- " + i.amount}</Text>
-              ))}
-          </StyledIngView>
-          <StyledInsView>
-            <StyledDescription>Instruktioner</StyledDescription>
-            {recipe.instructions &&
-              recipe.instructions.map((instruction) => (
-                <StyledText>{instrNumber++ + ". " + instruction}</StyledText>
-              ))}
-          </StyledInsView>
-        </RecipeLayout>
+        </StyledScrollView>
       ) : (
-        <ActivityIndicator size="small" color="#0000ff" />
+        //focus mode view
+        <StyledScrollView>
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RecipeLayout>
+            <StyledIngView>
+              <Switch
+                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                thumbColor={isEnabled ? "#ffffff" : "#f4f3f4"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+              />
+              <Text>Focus mode</Text>
+              <StyledDescription>Ingredienser</StyledDescription>
+              {recipe.ingredients &&
+                recipe.ingredients.map((i) => (
+                  <Text>{i.name + "- " + i.amount}</Text>
+                ))}
+            </StyledIngView>
+            <StyledInsView>
+              <StyledDescription>Instruktioner</StyledDescription>
+              {recipe.instructions &&
+                recipe.instructions.map((instruction) => (
+                  <StyledText>{instrNumber++ + ". " + instruction}</StyledText>
+                ))}
+            </StyledInsView>
+          </RecipeLayout>
+        </StyledScrollView>
       )}
-    </StyledScrollView>
+    </>
   );
 }
 
