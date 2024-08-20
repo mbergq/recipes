@@ -1,5 +1,16 @@
 import styled from "styled-components/native";
 
+export const StyledScrollView = styled.ScrollView`
+  background-color: papayawhip;
+`;
+
+export const RecipeLayout = styled.View`
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: papayawhip;
+`;
+
 export const StyledTitle = styled.Text`
   font-size: 42px;
 `;

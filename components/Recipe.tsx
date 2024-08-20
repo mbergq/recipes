@@ -7,13 +7,14 @@ import {
   RefreshControl,
 } from "react-native";
 import { useCallback, useEffect, useState } from "react";
-import { RecipeLayout } from "../styled-components/S.RecipeLayout";
 import {
   StyledTitle,
   StyledDescription,
   StyledIngView,
   StyledInsView,
   StyledText,
+  StyledScrollView,
+  RecipeLayout,
 } from "../styled-components/S.Recipe";
 
 const styles = StyleSheet.create({
@@ -73,7 +74,7 @@ function Recipe({ route }) {
   let instrNumber = 1;
 
   return (
-    <ScrollView>
+    <StyledScrollView>
       <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       {data !== null ? (
         <RecipeLayout>
@@ -104,7 +105,7 @@ function Recipe({ route }) {
       ) : (
         <ActivityIndicator size="small" color="#0000ff" />
       )}
-    </ScrollView>
+    </StyledScrollView>
   );
 }
 
