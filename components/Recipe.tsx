@@ -13,12 +13,13 @@ import {
   StyledDescription,
   StyledIngView,
   StyledInsView,
+  StyledText,
 } from "../styled-components/S.Recipe";
 
 const styles = StyleSheet.create({
   headerImg: {
-    width: 100,
-    height: 122,
+    height: 220,
+    width: 220,
   },
 });
 
@@ -68,6 +69,9 @@ function Recipe({ route }) {
     };
     fetchData();
   }, []);
+
+  let instrNumber = 1;
+
   return (
     <ScrollView>
       <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -93,7 +97,7 @@ function Recipe({ route }) {
             <StyledDescription>Instruktioner</StyledDescription>
             {recipe.instructions &&
               recipe.instructions.map((instruction) => (
-                <Text>{instruction}</Text>
+                <StyledText>{instrNumber++ + ". " + instruction}</StyledText>
               ))}
           </StyledInsView>
         </RecipeLayout>
