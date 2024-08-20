@@ -1,5 +1,8 @@
-import { ActivityIndicator } from "react-native";
-import { StyledView } from "../styled-components/StyledView";
+import { ActivityIndicator, ImageBackground } from "react-native";
+import {
+  ImageBG,
+  RecipeWrapper,
+} from "../styled-components/S.FetchData.Components";
 import { useEffect, useState } from "react";
 import RecipeList from "./RecipeList";
 
@@ -74,20 +77,15 @@ function FetchData() {
     fetchData();
   }, []);
   return (
-    <StyledView>
+    <ImageBG source={require("../assets/granola-cover.jpg")} resizeMode="cover">
       {data !== null ? (
-        <RecipeList props={recipeNames} />
+        <RecipeWrapper>
+          <RecipeList props={recipeNames} />
+        </RecipeWrapper>
       ) : (
         <ActivityIndicator size="small" color="#0000ff" />
       )}
-      {/* <RecipeList props={recipeNames} /> */}
-      {/* <Button
-        title="Data"
-        onPress={() => {
-          console.log(recipeNames);
-        }}
-      ></Button> */}
-    </StyledView>
+    </ImageBG>
   );
 }
 export default FetchData;
