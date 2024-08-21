@@ -7,6 +7,7 @@ import { Text, Button } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
 import FetchData from "./components/FetchData";
 import Recipe from "./components/Recipe";
+import Carousel from "./components/Carousel";
 
 function HomeScreen({ navigation }) {
   return (
@@ -16,6 +17,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Recipes"
         onPress={() => navigation.navigate("Recipes")}
+      />
+      <Button
+        title="Carousel"
+        onPress={() => navigation.navigate("Carousel")}
       />
     </StyledView>
   );
@@ -49,6 +54,15 @@ export default function App() {
         <Stack.Screen
           name="Recipe"
           component={Recipe}
+          options={{
+            headerStyle: {
+              backgroundColor: "papayawhip",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Carousel"
+          component={Carousel}
           options={{
             headerStyle: {
               backgroundColor: "papayawhip",
