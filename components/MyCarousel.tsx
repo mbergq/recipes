@@ -1,6 +1,8 @@
 import { Text, View, StyleSheet } from "react-native";
 import Carousel from "pinar";
 
+import { FirstView } from "../styled-components/S.MyCarousel";
+
 const styles = StyleSheet.create({
   slide1: {
     flex: 1,
@@ -31,9 +33,9 @@ const styles = StyleSheet.create({
 function MyCarousel() {
   return (
     <Carousel>
-      <View style={styles.slide1}>
+      <FirstView>
         <Text style={styles.text}>1</Text>
-      </View>
+      </FirstView>
       <View style={styles.slide2}>
         <Text style={styles.text}>2</Text>
       </View>
