@@ -68,7 +68,7 @@ function Recipe({ route }) {
           console.log("Index is: " + matchingIndex);
         }
       }
-      console.log(data.recipes[matchingIndex].language[0].swedish);
+      // console.log(data.recipes[matchingIndex].language[0].swedish);
       setRecipe(data.recipes[matchingIndex].language[0].swedish);
     };
     fetchData();

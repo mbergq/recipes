@@ -12,7 +12,7 @@ export const RecipeLayout = styled.View`
 `;
 
 export const StyledTitle = styled.Text`
-  font-size: 42px;
+  font-size: 32px;
 `;
 
 export const StyledDescription = styled.Text`
