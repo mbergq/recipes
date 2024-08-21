@@ -137,15 +137,19 @@ function Recipe({ route }) {
               <Text>Focus mode</Text>
               <StyledDescription>Ingredienser</StyledDescription>
               {recipe.ingredients &&
-                recipe.ingredients.map((i) => (
-                  <Text>{i.name + "- " + i.amount}</Text>
+                recipe.ingredients.map((ingredient, index) => (
+                  <Text key={index}>
+                    {ingredient.name + "- " + ingredient.amount}
+                  </Text>
                 ))}
             </StyledIngView>
             <StyledInsView>
               <StyledDescription>Instruktioner</StyledDescription>
               {recipe.instructions &&
-                recipe.instructions.map((instruction) => (
-                  <StyledText>{instrNumber++ + ". " + instruction}</StyledText>
+                recipe.instructions.map((instruction, index) => (
+                  <StyledText key={index}>
+                    {instrNumber++ + ". " + instruction}
+                  </StyledText>
                 ))}
             </StyledInsView>
           </RecipeLayout>
