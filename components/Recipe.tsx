@@ -14,8 +14,10 @@ import {
   StyledText,
   StyledScrollView,
   RecipeLayout,
+  StyledView,
 } from "../styled-components/S.Recipe";
 import { useCallback, useEffect, useState } from "react";
+import ResponsiveImageView from "react-native-responsive-image-view";
 
 const styles = StyleSheet.create({
   headerImg: {
@@ -84,10 +86,13 @@ function Recipe({ route }) {
           {data !== null ? (
             <RecipeLayout>
               <StyledTitle>{recipeTitle}</StyledTitle>
-              <Image
-                style={styles.headerImg}
-                source={require("../assets/testimg.jpg")}
-              ></Image>
+              <ResponsiveImageView source={require("../assets/testimg.jpg")}>
+                {({ getViewProps, getImageProps }) => (
+                  <StyledView {...getViewProps()}>
+                    <Image {...getImageProps()} />
+                  </StyledView>
+                )}
+              </ResponsiveImageView>
               {recipe.description && (
                 <StyledDescription>{recipe.description}</StyledDescription>
               )}

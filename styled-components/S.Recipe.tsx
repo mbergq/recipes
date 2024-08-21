@@ -37,3 +37,7 @@ export const StyledText = styled.Text`
   width: 100%;
   margin-bottom: 10px;
 `;
+
+export const StyledView = styled.View`
+  width: 184px;
+`;
