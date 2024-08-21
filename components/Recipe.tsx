@@ -19,13 +19,6 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import ResponsiveImageView from "react-native-responsive-image-view";
 
-const styles = StyleSheet.create({
-  headerImg: {
-    height: 220,
-    width: 220,
-  },
-});
-
 interface Recipe {
   id: number;
   name: string;
@@ -43,6 +36,13 @@ function Recipe({ route }) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+  //dumb way to set the right image but it works.. for now :)
+  const [image, setImage] = useState<null | string>(null);
+  const img =
+    image === "granola"
+      ? require("../assets/granola.jpg")
+      : require("../assets/tomatosauce.jpg");
 
   const onRefresh = useCallback(() => {
     if (data === null) {
@@ -69,6 +69,12 @@ function Recipe({ route }) {
           matchingIndex = i;
           console.log("Index is: " + matchingIndex);
         }
+        if (matchingIndex === 0) {
+          setImage("granola");
+        }
+        if (matchingIndex === 1) {
+          setImage("tomatosauce");
+        }
       }
       // console.log(data.recipes[matchingIndex].language[0].swedish);
       setRecipe(data.recipes[matchingIndex].language[0].swedish);
@@ -77,7 +83,6 @@ function Recipe({ route }) {
   }, []);
 
   let instrNumber = 1;
-
   return (
     <>
       {isEnabled === false ? (
@@ -86,7 +91,7 @@ function Recipe({ route }) {
           {data !== null ? (
             <RecipeLayout>
               <StyledTitle>{recipeTitle}</StyledTitle>
-              <ResponsiveImageView source={require("../assets/testimg.jpg")}>
+              <ResponsiveImageView source={img}>
                 {({ getViewProps, getImageProps }) => (
                   <StyledView {...getViewProps()}>
                     <Image {...getImageProps()} />
