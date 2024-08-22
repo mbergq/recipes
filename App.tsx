@@ -1,7 +1,6 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StatusBar } from "expo-status-bar";
 import { Text, Button } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
 import FetchData from "./components/FetchData";
@@ -14,7 +13,6 @@ const FPURL = "https://www.freepik.com/icons/recipe";
 function HomeScreen({ navigation }) {
   return (
     <StyledView>
-      <StatusBar></StatusBar>
       <Text>Home Screen</Text>
       <Button
         title="Go to Recipes"
@@ -24,7 +22,7 @@ function HomeScreen({ navigation }) {
         title="Carousel"
         onPress={() => navigation.navigate("My Carousel")}
       />
-      <Link url={FPURL}>Icon by Iconic Panda</Link>
+      <Link url={FPURL}>Splashscreen-Icon by Iconic Panda</Link>
     </StyledView>
   );
 }

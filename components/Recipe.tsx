@@ -14,6 +14,7 @@ import {
   StyledScrollView,
   RecipeLayout,
   StyledView,
+  StyledTitleView,
 } from "../styled-components/S.Recipe";
 import { useCallback, useEffect, useState } from "react";
 import ResponsiveImageView from "react-native-responsive-image-view";
@@ -89,17 +90,19 @@ function Recipe({ route }) {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           {data !== null ? (
             <RecipeLayout>
-              <StyledTitle>{recipeTitle}</StyledTitle>
-              <ResponsiveImageView source={img}>
-                {({ getViewProps, getImageProps }) => (
-                  <StyledView {...getViewProps()}>
-                    <Image {...getImageProps()} />
-                  </StyledView>
+              <StyledTitleView>
+                <StyledTitle>{recipeTitle}</StyledTitle>
+                <ResponsiveImageView source={img}>
+                  {({ getViewProps, getImageProps }) => (
+                    <StyledView {...getViewProps()}>
+                      <Image {...getImageProps()} />
+                    </StyledView>
+                  )}
+                </ResponsiveImageView>
+                {recipe.description && (
+                  <StyledDescription>{recipe.description}</StyledDescription>
                 )}
-              </ResponsiveImageView>
-              {recipe.description && (
-                <StyledDescription>{recipe.description}</StyledDescription>
-              )}
+              </StyledTitleView>
               <StyledIngView>
                 <Switch
                   trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -108,6 +111,7 @@ function Recipe({ route }) {
                   onValueChange={toggleSwitch}
                   value={isEnabled}
                 />
+                <Text>Focus mode</Text>
                 <StyledDescription>Ingredienser</StyledDescription>
                 {recipe.ingredients &&
                   recipe.ingredients.map((ingredient, index) => (

@@ -21,6 +21,7 @@ function RecipeList(props: Props) {
         onPress={() => {
           navigation.navigate("Recipe", { recipeTitle: title });
         }}
+        android_disableSound={true}
       >
         <StyledListItem>{title}</StyledListItem>
       </Pressable>
