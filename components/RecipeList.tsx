@@ -1,4 +1,4 @@
-import { Button, FlatList, Text, View, Pressable } from "react-native";
+import { FlatList, View, Pressable } from "react-native";
 import { StyledListItem } from "../styled-components/S.ListItem";
 import {
   useNavigation,

@@ -1,8 +1,13 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import Carousel from "pinar";
 
 import { FirstView } from "../styled-components/S.MyCarousel";
 import ResponsiveImageView from "react-native-responsive-image-view";
+import {
+  useNavigation,
+  ParamListBase,
+  NavigationProp,
+} from "@react-navigation/native";
 
 const bgColor = "papayawhip";
 
@@ -34,6 +39,7 @@ const styles = StyleSheet.create({
 });
 
 function MyCarousel() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Carousel>
       <View style={styles.slide1}>
@@ -42,7 +48,15 @@ function MyCarousel() {
         <ResponsiveImageView source={require("../assets/cereal-bowl.png")}>
           {({ getViewProps, getImageProps }) => (
             <FirstView {...getViewProps()}>
-              <Image {...getImageProps()} />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate("Recipe", {
+                    recipeTitle: "Hemgjord Granola",
+                  })
+                }
+              >
+                <Image {...getImageProps()} />
+              </Pressable>
             </FirstView>
           )}
         </ResponsiveImageView>
