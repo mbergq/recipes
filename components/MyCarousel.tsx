@@ -74,7 +74,7 @@ function MyCarousel() {
               <Pressable
                 onPress={() =>
                   navigation.navigate("Recipe", {
-                    recipeTitle: "Italiensk Tomatsås",
+                    recipeTitle: "Italiensk tomatsås",
                   })
                 }
               >

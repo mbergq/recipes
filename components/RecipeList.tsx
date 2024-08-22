@@ -18,7 +18,9 @@ function RecipeList(props: Props) {
   const Item = ({ title }: TitleProps, { id }: IdProps) => (
     <View>
       <Pressable
-        onPress={() => navigation.navigate("Recipe", { recipeTitle: title })}
+        onPress={() => {
+          navigation.navigate("Recipe", { recipeTitle: title });
+        }}
       >
         <StyledListItem>{title}</StyledListItem>
       </Pressable>
