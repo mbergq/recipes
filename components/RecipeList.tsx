@@ -20,14 +20,12 @@ function RecipeList(props: Props) {
       <Pressable
         onPress={() => navigation.navigate("Recipe", { recipeTitle: title })}
       >
-        {/* <Button title="Test" onPress={() => console.log(title)}></Button> */}
         <StyledListItem>{title}</StyledListItem>
       </Pressable>
     </View>
   );
   return (
     <>
-      {/* <Button title="Press me" onPress={() => console.log(props)}></Button> */}
       <FlatList
         data={DATA}
         renderItem={({ item }) => <Item title={item.title} key={item.id} />}

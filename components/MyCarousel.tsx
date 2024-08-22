@@ -68,8 +68,6 @@ function MyCarousel() {
         </Link>
       </View>
       <View style={styles.slide2}>
-        {/* <a href="https://www.freepik.com/search">Icon by amoghdesign</a> */}
-        {/* <Text style={styles.text}>2</Text> */}
         <ResponsiveImageView source={require("../assets/tomato-icon.png")}>
           {({ getViewProps, getImageProps }) => (
             <FirstView {...getViewProps()}>
@@ -89,7 +87,7 @@ function MyCarousel() {
         <Link url={"https://www.freepik.com/search"}>Icon by Meiliastudio</Link>
       </View>
       <View style={styles.slide3}>
-        {/* <Text style={styles.text}>3</Text> */}
+        <Text>No more recipes available yet..</Text>
       </View>
     </Carousel>
   );
