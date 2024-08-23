@@ -22,7 +22,6 @@ function HomeScreen({ navigation }) {
   return (
     <StyledView>
       <PlatformComponent />
-      {/* <Text>Home Screen</Text> */}
       <Button title="Recipes" onPress={() => navigation.navigate("Recipes")} />
       <Button
         title="Carousel"

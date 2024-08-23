@@ -24,7 +24,7 @@ const font = StyleSheet.create({
 });
 
 function RecipeList(props: Props) {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Allan_400Regular,
     Allan_700Bold,
   });
@@ -50,7 +50,7 @@ function RecipeList(props: Props) {
     </StyledWrapper>
   );
   if (!fontsLoaded) {
-    return console.log("Loading...");
+    return console.log("Loading fonts..");
   } else {
     return (
       <>
