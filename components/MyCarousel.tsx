@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-raw-text */
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import Carousel from "pinar";
 import Link from "./Link";
@@ -30,12 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  // text: {
-  //   color: "#1f2d3d",
-  //   fontSize: 48,
-  //   fontWeight: "bold",
-  //   opacity: 0.7,
-  // },
 });
 
 function MyCarousel() {
