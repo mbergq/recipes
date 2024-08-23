@@ -112,7 +112,9 @@ function Recipe({ route }) {
                   value={isEnabled}
                 />
                 <Text>Focus mode</Text>
-                <StyledDescription>Ingredienser</StyledDescription>
+                <StyledDescription>
+                  <Text>Ingredienser</Text>
+                </StyledDescription>
                 {recipe.ingredients &&
                   recipe.ingredients.map((ingredient, index) => (
                     <Text key={index}>
@@ -121,7 +123,9 @@ function Recipe({ route }) {
                   ))}
               </StyledIngView>
               <StyledInsView>
-                <StyledDescription>Instruktioner</StyledDescription>
+                <StyledDescription>
+                  <Text>Instruktioner</Text>
+                </StyledDescription>
                 {recipe.instructions &&
                   recipe.instructions.map((instruction, index) => (
                     <StyledText key={index}>
@@ -148,7 +152,9 @@ function Recipe({ route }) {
                 value={isEnabled}
               />
               <Text>Focus mode</Text>
-              <StyledDescription>Ingredienser</StyledDescription>
+              <StyledDescription>
+                <Text>Ingredienser</Text>
+              </StyledDescription>
               {recipe.ingredients &&
                 recipe.ingredients.map((ingredient, index) => (
                   <Text key={index}>
@@ -157,7 +163,9 @@ function Recipe({ route }) {
                 ))}
             </StyledIngView>
             <StyledInsView>
-              <StyledDescription>Instruktioner</StyledDescription>
+              <StyledDescription>
+                <Text>Instruktioner</Text>
+              </StyledDescription>
               {recipe.instructions &&
                 recipe.instructions.map((instruction, index) => (
                   <StyledText key={index}>
