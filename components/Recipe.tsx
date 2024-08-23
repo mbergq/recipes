@@ -33,9 +33,10 @@ function Recipe({ route }) {
   const [recipe, setRecipe] = useState<Recipe>(Object);
 
   const [refreshing, setRefreshing] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [focusModeIsEnabled, setFocusModeIsEnabled] = useState(false);
 
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch = () =>
+    setFocusModeIsEnabled((previousState) => !previousState);
 
   //dumb way to set the right image but it works.. for now :)
   const [image, setImage] = useState<null | string>(null);
@@ -85,7 +86,7 @@ function Recipe({ route }) {
   let instrNumber = 1;
   return (
     <>
-      {isEnabled === false ? (
+      {focusModeIsEnabled === false ? (
         <StyledScrollView>
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           {data !== null ? (
@@ -106,10 +107,10 @@ function Recipe({ route }) {
               <StyledIngView>
                 <Switch
                   trackColor={{ false: "#767577", true: "#81b0ff" }}
-                  thumbColor={isEnabled ? "#ffffff" : "#f4f3f4"}
+                  thumbColor={focusModeIsEnabled ? "#ffffff" : "#f4f3f4"}
                   ios_backgroundColor="#3e3e3e"
                   onValueChange={toggleSwitch}
-                  value={isEnabled}
+                  value={focusModeIsEnabled}
                 />
                 <Text>Focus mode</Text>
                 <StyledDescription>
@@ -146,10 +147,10 @@ function Recipe({ route }) {
             <StyledIngView>
               <Switch
                 trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={isEnabled ? "#ffffff" : "#f4f3f4"}
+                thumbColor={focusModeIsEnabled ? "#ffffff" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
-                value={isEnabled}
+                value={focusModeIsEnabled}
               />
               <Text>Focus mode</Text>
               <StyledDescription>
