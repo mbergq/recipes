@@ -6,6 +6,13 @@ export const StyledWrapper = styled.View`
   width: 300px;
 `;
 
+export const StyledPressable = styled.Pressable`
+  padding: 12px;
+  border-radius: 4px;
+`;
+
 export const StyledListItem = styled.Text`
-  font-size: 26px;
+  background-color: #d98888;
+  padding: 12px;
+  font-size: 28px;
 `;

@@ -1,17 +1,34 @@
-import { FlatList, View, Pressable, Button } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import {
   StyledWrapper,
   StyledListItem,
+  StyledPressable,
 } from "../styled-components/S.RecipeList";
 import {
   useNavigation,
   ParamListBase,
   NavigationProp,
 } from "@react-navigation/native";
+import {
+  useFonts,
+  Allan_400Regular,
+  Allan_700Bold,
+} from "@expo-google-fonts/allan";
 
 type Props = { props: { id: number; title: string }[] };
 
+const font = StyleSheet.create({
+  titleFont: {
+    fontFamily: "Allan_400Regular",
+  },
+});
+
 function RecipeList(props: Props) {
+  let [fontsLoaded] = useFonts({
+    Allan_400Regular,
+    Allan_700Bold,
+  });
+
   const DATA = props.props;
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   type IdProps = { id: number };
@@ -19,7 +36,7 @@ function RecipeList(props: Props) {
 
   const Item = ({ title }: TitleProps, { id }: IdProps) => (
     <StyledWrapper>
-      <Pressable
+      <StyledPressable
         onPress={() => {
           navigation.navigate("Recipe", { recipeTitle: title });
         }}
@@ -28,18 +45,22 @@ function RecipeList(props: Props) {
           { backgroundColor: pressed ? "lightgrey" : "papayawhip" },
         ]}
       >
-        <StyledListItem>{title}</StyledListItem>
-      </Pressable>
+        <StyledListItem style={font.titleFont}>{title}</StyledListItem>
+      </StyledPressable>
     </StyledWrapper>
   );
-  return (
-    <>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} key={item.id} />}
-      />
-    </>
-  );
+  if (!fontsLoaded) {
+    return console.log("Loading...");
+  } else {
+    return (
+      <>
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => <Item title={item.title} key={item.id} />}
+        />
+      </>
+    );
+  }
 }
 
 export default RecipeList;

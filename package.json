@@ -9,10 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/allan": "^0.2.3",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "@types/react": "~18.2.79",
     "expo": "~51.0.26",
+    "expo-app-loading": "^2.1.1",
+    "expo-font": "~12.0.9",
     "expo-status-bar": "~1.12.1",
     "pinar": "^0.12.2",
     "react": "18.2.0",
