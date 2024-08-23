@@ -41,6 +41,7 @@ export const StyledInsView = styled.View`
   align-items: flex-start;
   margin-top: 32px;
   width: 80%;
+  margin-bottom: 42px;
 `;
 
 export const StyledText = styled.Text`
