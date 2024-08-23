@@ -1,23 +1,28 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Text, Button } from "react-native";
+import { Button, Platform } from "react-native";
 import { StyledView } from "./styled-components/StyledView";
 import FetchData from "./components/FetchData";
 import Recipe from "./components/Recipe";
 import MyCarousel from "./components/MyCarousel";
 import Link from "./components/Link";
+import ComponentAndroid from "./components/ComponentAndroid";
+import ComponentIOS from "./components/ComponentIOS";
 
 const FPURL = "https://www.freepik.com/icons/recipe";
+
+const PlatformComponent = Platform.select({
+  ios: () => ComponentIOS,
+  android: () => ComponentAndroid,
+})();
 
 function HomeScreen({ navigation }) {
   return (
     <StyledView>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Recipes"
-        onPress={() => navigation.navigate("Recipes")}
-      />
+      <PlatformComponent />
+      {/* <Text>Home Screen</Text> */}
+      <Button title="Recipes" onPress={() => navigation.navigate("Recipes")} />
       <Button
         title="Carousel"
         onPress={() => navigation.navigate("My Carousel")}
@@ -37,7 +42,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{
-            title: "Recipes App",
+            title: "Home",
             headerStyle: {
               backgroundColor: "papayawhip",
             },
