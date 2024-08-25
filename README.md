@@ -19,3 +19,8 @@ I also learned that a well-structured JSON / datafile can make life a lot easier
 Right now I handle a lot of stuff after I've fetched the data with loops and so on,
 it was very fun to do that but I can see how a better made JSON file would make
 it a lot more readable and easy to handle.
+
+I've also tried using custom fonts in the RecipeList component, at the moment
+there is a risk of a "whitescreen" appearing before the fonts are fully loaded,
+I tried fixing this by displaying the splashscreen before they are fetched but
+I got stuck and simply ran out of time.

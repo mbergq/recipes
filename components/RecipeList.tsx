@@ -24,11 +24,6 @@ const font = StyleSheet.create({
 });
 
 function RecipeList(props: Props) {
-  const [fontsLoaded] = useFonts({
-    Allan_400Regular,
-    Allan_700Bold,
-  });
-
   const DATA = props.props;
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   type IdProps = { id: number };
@@ -49,18 +44,15 @@ function RecipeList(props: Props) {
       </StyledPressable>
     </StyledWrapper>
   );
-  if (!fontsLoaded) {
-    return console.log("Loading fonts..");
-  } else {
-    return (
-      <>
-        <FlatList
-          data={DATA}
-          renderItem={({ item }) => <Item title={item.title} key={item.id} />}
-        />
-      </>
-    );
-  }
+
+  return (
+    <>
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => <Item title={item.title} key={item.id} />}
+      />
+    </>
+  );
 }
 
 export default RecipeList;
