@@ -29,6 +29,11 @@ function RecipeList(props: Props) {
   type IdProps = { id: number };
   type TitleProps = { title: string };
 
+  const [fontsLoaded] = useFonts({
+    Allan_400Regular,
+    Allan_700Bold,
+  });
+
   const Item = ({ title }: TitleProps, { id }: IdProps) => (
     <StyledWrapper>
       <StyledPressable

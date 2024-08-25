@@ -23,4 +23,5 @@ it a lot more readable and easy to handle.
 I've also tried using custom fonts in the RecipeList component, at the moment
 there is a risk of a "whitescreen" appearing before the fonts are fully loaded,
 I tried fixing this by displaying the splashscreen before they are fetched but
-I got stuck and simply ran out of time.
+I got stuck and simply ran out of time. I realized later I should've loaded this
+should've been loaded fonts at App.tsx instead of the RecipeList component.
