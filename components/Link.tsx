@@ -1,12 +1,13 @@
 import { Linking, Button } from "react-native";
 import { useCallback } from "react";
 
-type LinkProps = {
+type Props = {
   url: string;
-  children: string;
+  title?: string;
+  children: React.JSX.Element;
 };
 
-const Link = ({ url, children }: LinkProps) => {
+const Link = ({ url, title }: Props) => {
   const handlePress = useCallback(async () => {
     const supported = await Linking.canOpenURL(url);
 
@@ -18,7 +19,7 @@ const Link = ({ url, children }: LinkProps) => {
     }
   }, [url]);
 
-  return <Button title={children} onPress={handlePress} />;
+  return <Button title={title} onPress={handlePress}></Button>;
 };
 
 export default Link;
